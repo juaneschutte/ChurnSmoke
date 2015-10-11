@@ -1,9 +1,9 @@
 Package: ChurnSmoke
 Type: Package
-Title: What the package does (short line)
+Title: Describe churn trends and predict churn likelihood
 Version: 1.0
 Date: 2015-10-11
-Author: Who wrote it
+Author: Juane Schutte
 Maintainer: Who to complain to <yourfault@somewhere.net>
 Description: More about what it does (maybe more than one line)
 License: What license is it under?
