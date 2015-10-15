@@ -1,0 +1,55 @@
+---
+title: "Topic Model Visual"
+author: "Juane Schutte"
+date: "12 October 2015"
+output: html_document
+---
+
+<style>
+.sourceCode.r {
+  max-height: none !important;
+  background: none !important;
+  color: inherit !important;
+}
+</style>
+
+```{r "example01", eval = FALSE, echo = FALSE}
+library(stm)
+library(stmBrowser)
+library(pipeR)
+
+# piped version of example in ?stm
+textProcessor(
+  documents=gadarian$open.ended.response
+  ,metadata=gadarian
+) %>>%
+  (
+    prepDocuments( .$documents, .$vocab, .$meta )
+  ) %>>%
+( ~out ) %>>% #save as out for later
+  ({
+    set.seed(02138)
+    stm( .$documents, .$vocab, 3,
+       prevalence=~treatment + s(pid_rep),
+       data = .$meta 
+    )
+  }) %>>%
+~ mod_out
+```
+
+---
+
+```{r "example01_run", eval = TRUE, echo = FALSE, message= FALSE}
+library(stm)
+library(stmBrowser)
+library(pipeR)
+
+load("~/Downloads/stm_model_data.Rdata")
+
+stmBrowser_widget(
+  mod = mod_out
+  ,data = out$meta
+  ,covariates = c("treatment", "pid_rep")
+  ,text = "open.ended.response"
+)
+```

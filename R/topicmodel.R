@@ -1,13 +1,18 @@
 topicmodel <- function(input){
   
   require(htmlwidgets, quietly=TRUE)
+  library(stm)
+  library(stmBrowser)
+  library(pipeR)
 
+  load("~/Downloads/stm_model_data.Rdata")
   
   
   
-  
-  newdata_update <- select(newdata, client_id, Department, Critical.Role, Months.till.resignation)
-  newdata_update <- arrange(newdata_update, Months.till.resignation)
-  dt <- dTable(newdata_update, sPaginationType= "full_numbers")
-  dt 
+  stmBrowser_widget(
+    mod = mod_out
+    ,data = out$meta
+    ,covariates = c("treatment", "pid_rep")
+    ,text = "open.ended.response"
+  )
 }

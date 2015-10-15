@@ -22,7 +22,10 @@ data.frame(churn.risk)
 save(clf, file="/Users/juaneshutte/Tech/Git/ChurnSmoke/data/clf.rda")
 
 
-head(predictchurn(input="survey_results_ideal.csv"))
+head(predictchurn(input="survey_results_ideal_test_prediction.csv"))
 newdata = read.csv("survey_results_ideal.csv", sep=";", header=T)
 save(newdata, file="/Users/juaneshutte/Tech/Git/ChurnSmoke/data/newdata.rda")
+
+
+devtools::install_github("timelyportfolio/stmBrowser@htmlwidget")
 

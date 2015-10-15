@@ -1,0 +1,60 @@
+---
+title: "Week38 - datacomb"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    theme: ~
+    toc: true
+    mathjax: null
+    as.iframe: true
+---
+
+```{r echo=F}
+### get knitr just the way we like it
+
+knitr::opts_chunk$set( 
+  message = FALSE
+  , warning = FALSE
+  , error = FALSE
+  , tidy = FALSE
+  , cache = FALSE
+)
+
+library(pipeR)
+
+```
+
+
+## Installation
+
+```{r eval = FALSE}
+devtools::install_github("cmpolis/datacomb",subdir="pkg")
+```
+
+## Example
+
+In one line, we get a rich quick interactive overview of pretty-"big" data.
+
+```{r "example01", eval = FALSE}
+# devtools::install_github("cmpolis/datacomb", subdir="pkg")
+library(datacomb)
+data(diamonds, package="ggplot2")
+Datacomb(diamonds)
+```
+
+```{r "example01_run", echo = FALSE}
+library(datacomb)
+data(diamonds, package="ggplot2")
+Datacomb(diamonds,height=520,width=600)%>>%
+  (
+   htmlwidgets::as.iframe(
+      .
+      ,file="example01.html"
+      , libdir = "lib"
+      , selfcontained=F
+      , width = 750
+      , height = 650
+      , overflow = "hidden"
+   ))
+```
+
