@@ -29,3 +29,7 @@ save(newdata, file="/Users/juaneshutte/Tech/Git/ChurnSmoke/data/newdata.rda")
 
 devtools::install_github("timelyportfolio/stmBrowser@htmlwidget")
 
+devtools::install_github("cmpolis/datacomb",subdir="pkg")
+library(datacomb)
+data(newdata)
+Datacomb(newdata)
