@@ -56,8 +56,8 @@ predictchurn <- function(input){
   require(randomForest, quietly=TRUE)
   
   churn.prob <- predict(clf,newdata=feat.space,type="prob")
-  churn.risk <- churn.prob[colnames(churn.prob) == "Yes"]
-  newdata$churn.risk <- data.frame(churn.risk)
+  newdata$churn.risk <- churn.prob[colnames(churn.prob) == "Yes"]
+  
   
   return(newdata)
   
